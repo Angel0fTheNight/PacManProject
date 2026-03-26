@@ -23,18 +23,59 @@ BRANCO = (255,255,255)
 VERMELHO = (255,0,0)
 
 # Mapa (1=parede, 0=caminho, 2=comida)
-mapa = [
-    [1,1,1,1,1,1,1,1,1,1],
-    [1,2,2,2,1,2,2,2,2,1],
-    [1,2,1,2,1,2,1,1,2,1],
-    [1,2,1,2,2,2,2,1,2,1],
-    [1,2,1,1,1,1,2,1,2,1],
-    [1,2,2,2,2,1,2,2,2,1],
-    [1,1,1,1,2,1,1,1,2,1],
-    [1,2,2,1,2,2,2,1,2,1],
-    [1,2,2,2,2,1,2,2,2,1],
-    [1,1,1,1,1,1,1,1,1,1],
+mapas = [
+    # FASE 1
+    [
+        [1,1,1,1,1,1,1,1,1,1],
+        [1,2,2,2,1,2,2,2,2,1],
+        [1,2,1,2,1,2,1,1,2,1],
+        [1,2,1,2,2,2,2,1,2,1],
+        [1,2,1,1,1,1,2,1,2,1],
+        [1,2,2,2,2,1,2,2,2,1],
+        [1,1,1,1,2,1,1,1,2,1],
+        [1,2,2,1,2,2,2,1,2,1],
+        [1,2,2,2,2,1,2,2,2,1],
+        [1,1,1,1,1,1,1,1,1,1],
+    ],
+
+    # FASE 2 (mais difícil)
+    [
+        [1,1,1,1,1,1,1,1,1,1],
+        [1,2,1,2,2,2,1,2,2,1],
+        [1,2,1,2,1,2,1,2,1,1],
+        [1,2,2,2,1,2,2,2,2,1],
+        [1,1,1,2,1,1,1,2,1,1],
+        [1,2,2,2,2,2,1,2,2,1],
+        [1,2,1,1,1,2,1,1,2,1],
+        [1,2,2,2,1,2,2,2,2,1],
+        [1,2,1,2,2,2,1,2,2,1],
+        [1,1,1,1,1,1,1,1,1,1],
+    ]
 ]
+fase = 0
+mapa = mapas[fase]
+
+def proxima_fase():
+    global fase, mapa, player_x, player_y, ghost_x, ghost_y
+
+    fase += 1
+
+    if fase >= len(mapas):
+        print("Você zerou o jogo!")
+        pygame.quit()
+        exit()
+
+    mapa = mapas[fase]
+
+    # Reset posições
+    player_x, player_y = 1, 1
+    ghost_x, ghost_y = 8, 8
+
+def fase_completa():
+        for linha in mapa:
+            if 2 in linha:
+                return False
+        return True
 
 # Jogador
 player_x = 1
@@ -111,7 +152,7 @@ def checar_colisao():
 rodando = True
 
 while rodando:
-    clock.tick(8)
+    clock.tick(8 + fase * 2)
 
     for evento in pygame.event.get():
         if evento.type == pygame.QUIT:
@@ -126,9 +167,14 @@ while rodando:
                 mover_player(-1, 0)
             elif evento.key == pygame.K_RIGHT:
                 mover_player(1, 0)
-
+            if fase_completa():
+                proxima_fase()
     mover_fantasma()
     checar_colisao()
     desenhar()
-
+def fase_completa():
+    for linha in mapa:
+        if 2 in linha:
+            return False
+    return True
 pygame.quit()
