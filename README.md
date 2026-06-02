@@ -1,31 +1,69 @@
-# 🕹️ Mini Pac-Man
+# 👾 Pac-Man
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Pygame](https://img.shields.io/badge/pygame-ED1C24?style=for-the-badge&logo=python&logoColor=white)
+Recriação do clássico Pac-Man desenvolvida em Python com Pygame, com sistema de fases, IA de inimigo e ranking persistente.
 
-Um jogo clássico de Pac-Man desenvolvido em **Python** utilizando a biblioteca **Pygame**. Este projeto foca-se na lógica de movimentação por grelha, colisão e gestão de estados de jogo (menu, jogo, ranking).
+-----
 
----
+## 📋 Sobre o Projeto
 
-## 🚀 Funcionalidades
+Projeto acadêmico que reimagina o arcade clássico com funcionalidades modernas: múltiplos mapas, sistema de pontuação com ranking Top 5 salvo localmente, e progressão de dificuldade entre fases.
 
-- **Jogabilidade Clássica**: Controle o Pac-Man num sistema de grelha 10x10.
-- **Inimigo (Fantasma)**: Um fantasma vermelho com movimentação aleatória que persegue o jogador.
-- **Progressão de Níveis**: Sistema de fases com diferentes mapas.
-- **Sistema de Ranking**: Gravação persistente dos 5 melhores tempos/pontuações num ficheiro JSON.
-- **Interface Gráfica**: Menus interativos para navegação e inserção de nome.
+-----
 
-## 🛠️ Tecnologias e Requisitos
+## ✨ Funcionalidades
 
-- **Linguagem:** Python 3.x
-- **Biblioteca:** [Pygame](https://www.pygame.org/news)
-- **Armazenamento:** JSON (para o ranking local)
+- ✅ Múltiplos mapas e fases progressivas
+- ✅ Sistema de pontuação com ranking Top 5 persistente
+- ✅ IA de movimentação de inimigo (movimento aleatório)
+- ✅ Menu interativo
+- ✅ Dados salvos em arquivo local (`ranking.json`)
 
----
+-----
 
-## 🎮 Como Instalar e Jogar
+## 🛠️ Tecnologias
 
-### 1. Clonar o repositório
+|Tecnologia|Uso                      |
+|----------|-------------------------|
+|Python    |Linguagem principal      |
+|Pygame    |Engine gráfica e de jogos|
+|JSON      |Persistência do ranking  |
+
+-----
+
+## 🚀 Como Rodar
+
+### Pré-requisitos
+
+- Python 3.8+
+- Pygame
+
+### Passos
+
 ```bash
-git clone [https://github.com/teu-usuario/pacmanproject.git](https://github.com/teu-usuario/pacmanproject.git)
-cd pacmanproject
+# Clone o repositório
+git clone https://github.com/Angel0fTheNight/PacManProject.git
+
+# Entre na pasta
+cd PacManProject
+
+# Instale as dependências
+pip install pygame
+
+# Execute o jogo
+python main.py
+```
+
+-----
+
+## 🎮 Controles
+
+|Tecla  |Ação           |
+|-------|---------------|
+|← → ↑ ↓|Mover o Pac-Man|
+|ESC    |Pausar / Sair  |
+
+-----
+
+## 👨‍💻 Autor
+
+**Cauan Augusto** — [GitHub](https://github.com/Angel0fTheNight) · [LinkedIn](https://linkedin.com/in/cauan-augusto198b48325)
